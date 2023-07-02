@@ -1,2 +1,18 @@
-<h1>Admin::Genres#edit</h1>
-<p>Find me in app/views/admin/genres/edit.html.erb</p>
+<%= form_with model: @genre, url: admin_genre_path(@genre.id) do |f| %>
+<div class="container px-5 px-sm-0 mt-3">
+  <div class="row">
+    <div class="offset-md-1 pb-5 mb-5">
+      <h5 class="d-inline-block m-4 ml-5 bg-light">　ジャンル編集　</h5>
+        <table class="table table-sm table-borderless">
+          <tr>
+            <td class="pr-5"><%= f.label "ジャンル名" %></td>
+            <td class="pr-5"><%= f.text_field :name %></td>
+            <td class="pr-5"><%= f.submit "　変更を保存　", class: "d-inline-block btn btn-success rounded btn-sm mx-auto" %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>

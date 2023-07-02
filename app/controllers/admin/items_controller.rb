@@ -10,4 +10,9 @@ class Admin::ItemsController < ApplicationController
 
   def edit
   end
+
+  def item_params
+    params.require(:item).permit(:name, :image, :introduction, :genre_id, :price)
+  end
+
 end

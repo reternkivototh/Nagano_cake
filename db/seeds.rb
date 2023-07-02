@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Admin.create!(
+  email: 'dokkoi@admin',
+  password: 'silver')
+
+require "csv"
+
+
+CSV.foreach('db/genre.csv') do |row|
+  Category.create(:id => row[0], :name => row[1], :ancestry => [2])
+end
