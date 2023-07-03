@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :edit, :create, :update]
     resources :orders, only: [:show]
     resources :customers, only: [:index, :show, :edit]
-    resources :items, only: [:index, :show, :edit, :new]
+    resources :items, only: [:index, :show, :edit, :new, :create]
     patch '/admin/genres/:id' => 'genres#update', as: 'update'
   end
 

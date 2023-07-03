@@ -14,5 +14,5 @@ require "csv"
 
 
 CSV.foreach('db/genre.csv') do |row|
-  Category.create(:id => row[0], :name => row[1], :ancestry => [2])
+  Genre.create(:id => row[0], :name => row[1])
 end
