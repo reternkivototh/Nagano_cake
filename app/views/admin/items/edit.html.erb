@@ -1,2 +1,40 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<%= form_with model: @item, url: admin_item_path  do |f| %>
+  <div class="container px-5 px-sm-0 mt-3">
+    <div class="row">
+      <div class="col-10 offset-1 pb-5 mb-5">
+        <h5 class="d-inline-block mt-4 mb-5 bg-light">　商品編集　</h5>
+          <table class="col-8 offset-2 table table-sm table-borderless">
+            <tr>
+              <td><%= f.label "商品画像" %></td>
+              <td colspan="2"><%= f.file_field :image, accept: "image/*" %></td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td><%= f.label "商品名" %></td>
+              <td colspan="2"><%= f.text_field :name, class: "col-9" %></td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td><%= f.label "商品説明" %></td>
+              <td colspan="2"><%= f.text_area :introduction, class: "col-9" %></td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td><%= f.label "ジャンル選択" %></td>
+              <td colspan="2"><%= f.collection_select :genre_id, Genre.all, :id, :name, :include_blank => "--選択してください--　　　　　　　　　　　" %></td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td><%= f.label "税抜価格" %></td>
+              <td colspan="2"><%= f.text_field :price, class: "col-9 mr-1" %><%= "円" %></td>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td><br></td>
+              <td><%= f.submit "変更を保存", class: "btn btn-success rounded btn-sm d-grid gap-2 col-4 mx-auto mt-4" %></td>
+            </tr>
+          </table>
+      </div>
+    </div>
+  </div>
+<% end %>

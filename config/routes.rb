@@ -24,8 +24,9 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :edit, :create, :update]
     resources :orders, only: [:show]
     resources :customers, only: [:index, :show, :edit]
-    resources :items, only: [:index, :show, :edit, :new, :create]
+    resources :items, only: [:index, :show, :edit, :new, :create, :update]
     patch '/admin/genres/:id' => 'genres#update', as: 'update'
+    patch '/admin/items/:id' => 'items#update', as: 'update_item'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
