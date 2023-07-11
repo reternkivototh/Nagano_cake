@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:show, :edit, :unsubscribe, :withdrawal]
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch '/customers/:id/withdrawal' => 'customers#withdrawl', as: 'withdrawal'
+    patch '/public/cart_items/:id' => 'cart_items#update', as: 'update'
   end
 
 
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
     get 'homes/top'
     resources :genres, only: [:index, :edit, :create, :update]
     resources :orders, only: [:show]
-    resources :customers, only: [:index, :show, :edit]
+    resources :customers, only: [:index, :show, :edit, :update]
     resources :items, only: [:index, :show, :edit, :new, :create, :update]
     patch '/admin/genres/:id' => 'genres#update', as: 'update'
     patch '/admin/items/:id' => 'items#update', as: 'update_item'

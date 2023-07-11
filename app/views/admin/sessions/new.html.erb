@@ -5,7 +5,7 @@
         <h5 class="d-inline-block mt-4 mb-5 bg-light">　管理者ログイン　</h5>
           <table class="col-8 offset-2 table table-sm table-borderless">
             <tr>
-              <td><%= f.label "メールアドレス" %></td>
+              <td><%= f.label :email %></td>
               <td colspan="2"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-10" %></td>
               <td><br></td>
             </tr>

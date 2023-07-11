@@ -1,2 +1,61 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<%= form_with model: @customer, url: admin_customer_path do |f| %>
+
+
+<div class="container px-5 px-sm-0 mt-3">
+  <div class="row">
+    <div class="offset-md-1 pb-5 mb-5">
+      <h5 class="d-inline-block my-4 bg-light">　<%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細　</h5>
+      <table class="table table-sm table-borderless">
+        <tr>
+          <td><%= f.label "会員ID" %></td>
+          <td><%= @customer.id %></td>
+          <td><br></td>
+        </tr>
+        <tr>
+          <td><%= f.label "氏名" %></td>
+          <td><%= @customer.last_name %><%= @customer.first_name %></td>
+          <td><br></td>
+        </tr>
+        <tr>
+          <td><%= f.label "フリガナ" %></td>
+          <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+          <td><br></td>
+        </tr>
+        <tr>
+          <td><%= f.label "郵便番号" %></td>
+          <td><%= @customer.postal_code %></td>
+          <td><br></td>
+        </tr>
+        <tr>
+          <td><%= f.label "住所" %></td>
+          <td><%= @customer.address %></td>
+          <td><br></td>
+        </tr>
+        <tr>
+          <td><%= f.label "電話番号" %></td>
+          <td><%= @customer.telephone_number %></td>
+          <td><br></td>
+        </tr>
+        <tr>
+          <td class="pr-5"><%= f.label "メールアドレス" %></td>
+          <td><%= @customer.email %></td>
+          <td><br></td>
+        </tr>
+        <tr>
+          <td><%= f.label "会員ステータス" %></td>
+          <td><%= @customer.is_deleted? ? '無効' : '有効' %></td>
+          <td><br></td>
+        </tr>
+        <tr>
+          <td><br></td>
+          <td><%= link_to "編集する", edit_admin_customer_path, class: "btn btn-success rounded btn-sm d-grid gap-2 col-8 mx-auto" %></td>
+          <td><%= link_to "注文履歴一覧を見る", admin_homes_top_path, class: "btn btn-primary rounded btn-sm d-grid gap-2  mx-auto" %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+

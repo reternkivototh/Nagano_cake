@@ -6,6 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src="https://kit.fontawesome.com/1309c48d16.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -22,10 +23,10 @@
                 <%= link_to "マイページ", public_customer_path(current_customer.id) %>
               </li>
               <li class="nav-link btn btn-sm btn-outline-secondary rounded ml-5">
-                <%= link_to "商品一覧" %>
+                <%= link_to "商品一覧", public_items_path %>
               </li>
               <li class="nav-link btn btn-sm btn-outline-secondary rounded ml-5">
-                <%= link_to "カート" %>
+                <%= link_to "カート",  public_cart_items_path(current_customer.id) %>
               </li>
               <li class="nav-link btn btn-sm btn-outline-secondary rounded ml-5">
                 <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>

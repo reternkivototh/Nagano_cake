@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2023_07_02_082746) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "admin_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
@@ -54,7 +53,8 @@ ActiveRecord::Schema.define(version: 2023_07_02_082746) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "cart_item_id"
+    t.integer "item_id"
+    t.integer "customer_id"
     t.integer "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 2023_07_02_082746) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "user_id"
     t.string "last_name"
     t.string "first_name"
     t.string "last_name_kana"
@@ -74,7 +73,7 @@ ActiveRecord::Schema.define(version: 2023_07_02_082746) do
     t.string "postal_code"
     t.string "address"
     t.string "telephone_number"
-    t.boolean "is_deleted"
+    t.boolean "is_deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -82,14 +81,13 @@ ActiveRecord::Schema.define(version: 2023_07_02_082746) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.integer "genre_id"
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "items_id"
+    t.integer "genre_id"
     t.string "name"
     t.text "introduction"
     t.integer "price"
@@ -98,7 +96,8 @@ ActiveRecord::Schema.define(version: 2023_07_02_082746) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "order_item_id"
+    t.integer "order_id"
+    t.integer "item_id"
     t.integer "tax_included_price"
     t.integer "amount"
     t.datetime "created_at", precision: 6, null: false
@@ -106,7 +105,7 @@ ActiveRecord::Schema.define(version: 2023_07_02_082746) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "order_id"
+    t.integer "customer_id"
     t.string "receiver"
     t.string "postal_code"
     t.string "address"

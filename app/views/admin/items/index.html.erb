@@ -1,40 +1,42 @@
 <%= form_with model: @item, url: admin_items_path do |f| %>
 <div class="container px-5 px-sm-0 mt-3">
   <div class="row">
-    <div class="offset-md-1 pb-5 mb-5">
-      <h5 class="d-inline-block m-4 ml-5 bg-light">　商品一覧　</h5>
-        <table class="table col-md-8">
-          <thead class="bg-light">
-            <tr>
-              <th>商品ID</th>
-              <th>商品名</th>
-              <th>税抜価格</th>
-              <th>ジャンル</th>
-            </tr>
-          </thead>
-            <tbody>
-              <% @items.each do |item| %>
-                <tr>
-                  <td>
-                    <%= item.items_id %>
-                  </td>
-                  <td>
-                    <%= link_to admin_item_path(item.id) do %>
-                      <%= item.name %>
-                    <% end %>
-                  </td>
-                  <td>
-                    <%= item.price %>
-                  </td>
-                  <td>
-                    <%= item.genre %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-        </table>
-      </div>
+    <div class="offset-md-2">
+      <h5 class="d-inline-block my-4 ml-3 bg-light">　商品一覧　</h5>
     </div>
+    <div class="col-3 my-4 icon ml-auto">
+      <%= link_to new_admin_item_path do %>
+        <i class="far fa-plus-square"></i>
+      <% end %>
+    </div>
+    <table class="table col-8 offset-2">
+      <thead class="bg-light">
+        <tr>
+          <th>商品ID</th>
+          <th col="2">商品名</th>
+          <th></br></th>
+          <th>税抜価格</th>
+          <th col="2">ジャンル</th>
+          <th></br></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= item.id %></td>
+            <td col="2">
+              <%= link_to admin_item_path(item.id) do %>
+                <%= item.name %>
+              <% end %>
+            </td>
+            <td></br></td>
+            <td><%= item.price %></td>
+            <td col="2"><%= item.genre.name %></td>
+            <td><br></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 
