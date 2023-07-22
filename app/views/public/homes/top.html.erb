@@ -1,1 +1,36 @@
-<h1>Top page</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="ml-5 mt-5 col-2 border">
+      <div class="border-bottom text-center">ジャンル検索</div>
+      <div class="m-2">ケーキ</div>
+      <div class="m-2">焼き菓子</div>
+      <div class="m-2">プリン</div>
+      <div class="m-2">キャンディ</div>
+    </div>
+    <div class="mt-5 mx-auto col-4 offset-3 border">
+      <p>ようこそ、ながのCAKEへ！</br>
+      このサイトは、ケーキ販売のECサイトになります。</br>
+      会員でない方も商品の閲覧はできますが、</br>
+      購入には会員登録が必要になります。</p>
+    </div>
+  </div>
+  <div class="row">
+    <diV class="col-9 offset-3 my-5">
+      <h5 class="font-weight-bold mb-3">新着商品</h5>
+        <div class="contents d-flex flex-wrap">
+          <% @item.each do |item| %>
+          <div class="col-3">
+            <%= link_to public_item_path(item.id) do %>
+              <%= image_tag item.get_image(600, 400) %>
+            <% end %>
+          <div class="content text-left">
+            <p class="content-body "><%= item.name %></p>
+            <p class="content-body"><%= item.price %></p>
+          </div>
+        </div>
+        <% end %>
+      <div class="ml-auto mr-5 mb-5"><%= link_to "全ての商品を見る>", public_items_path %></div>
+    </div>
+  </div>
+
+</div>

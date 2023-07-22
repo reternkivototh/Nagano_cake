@@ -7,13 +7,18 @@ Rails.application.routes.draw do
   namespace :public do
     get 'homes/about'
     resources :items, only: [:index, :show]
-    resources :cart_items, only: [:index, :create, :update, :destroy]
-    resources :orders, only: [:new, :index, :show]
+    resources :orders, only: [:new, :index, :show, :create, :confirm] do
+      collection do
+        post 'confirm'
+        get 'complete'
+      end
+    end
     resources :genres, only: [:show]
-    resources :customers, only: [:show, :edit, :unsubscribe, :withdrawal]
+    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdrawal]
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch '/customers/:id/withdrawal' => 'customers#withdrawl', as: 'withdrawal'
-    patch '/public/cart_items/:id' => 'cart_items#update', as: 'update'
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
+    resources :cart_items, only: [:index, :create, :update, :destroy]
   end
 
 

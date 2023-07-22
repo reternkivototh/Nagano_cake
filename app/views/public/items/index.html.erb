@@ -5,19 +5,19 @@
       <h5 class="d-inline-block m-5 ml-5">　商品一覧(全<%= @item.count %>件)　</h5>
     </div>
   </div>
-  <div class="row ">
+  <div class="row">
     <div class="mx-auto col-md-8 col-md-offset-2">
-        <% @item.each do |item| %>
-        <div class="contents">
-          <div class="content-item">
+        <div class="contents d-flex flex-wrap">
+          <% @item.each do |item| %>
+          <div class="col-4">
             <%= link_to public_item_path(item.id) do %>
               <%= image_tag item.get_image(600, 400) %>
             <% end %>
+          <div class="content text-left">
+            <p class="content-body"><%= item.name %></p>
+            <p class="content-body"><%= item.price %></p>
           </div>
-          <div class="content">
-            <div class="content-body"><%= item.name %></div>
-            <div class="content-body"><%= item.price %></div>
-          </div>
+        </div>
         <% end %>
       </div>
     </div>

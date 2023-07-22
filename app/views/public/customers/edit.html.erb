@@ -1,2 +1,54 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<%= form_with model: @customer, url: public_customer_path(@customer.id), method: :patch do |f| %>
+<div class="container px-5 px-sm-0 mt-3">
+  <div class="row">
+    <div class="offset-md-1 pb-5 mb-5">
+      <h5 class="d-inline-block m-4 ml-5 bg-light">　会員情報編集　</h5>
+      <table class="table table-sm table-borderless">
+        <tr>
+          <td><%= f.label "名前" %></td>
+          <td class="pr-2"><%= f.label "(姓)" %></td>
+          <td class="pr-5"><%= f.text_field :last_name %></td>
+          <td><%= f.label "(名)" %></td>
+          <td><%= f.text_field :first_name %></td>
+        </tr>
+        <tr>
+          <td><%= f.label "フリガナ" %></td>
+          <td class="pr-2"><%= f.label "(セイ)" %></td>
+          <td><%= f.text_field :last_name_kana %></td>
+          <td class="pr-2"><%= f.label "(メイ)" %></td>
+          <td><%= f.text_field :first_name_kana %></td>
+          </tr>
+          <tr>
+            <td><%= f.label "メールアドレス" %></td>
+            <td><br></td>
+            <td><%= f.email_field :email, autocomplete: "email" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label "郵便番号(ハイフンなし)" %></td>
+            <td><br></td>
+            <td><%= f.text_field :postal_code %></td>
+          </tr>
+          <tr>
+            <td><%= f.label "住所" %></td>
+            <td><br></td>
+            <td colspan="3"><%= f.text_field :address, class: "col-12" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label "電話番号(ハイフンなし)" %></td>
+            <td><br></td>
+            <td><%= f.text_field :telephone_number %></td>
+          </tr>
+          <tr>
+            <td><br></td>
+            <td><br></td>
+            <td><%= f.submit "編集内容を保存", class: "btn btn-success rounded btn-sm d-grid gap-2 col-12 mx-auto mt-3" %></td>
+            <td><br></td>
+            <td><br></td>
+            <td><%= link_to "退会する", public_unsubscribe_path, class: "btn btn-danger rounded btn-sm col-12 mx-auto mt-3" %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+</div>
+
+<% end %>
