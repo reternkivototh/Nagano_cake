@@ -9,7 +9,7 @@
           <%= link_to "　退会しない　", public_customer_path(current_customer.id), class: "btn btn-primary rounded btn-sm mx-auto" %>
         </div>
         <div class="d-inline-block p-3">
-        <%= link_to "　退会する　", public_withdrawal_path, method: :patch, class: "btn btn-danger rounded btn-sm mx-auto" %>
+        <%= link_to "　退会する　", public_withdrawal_path, method: :patch, data: { confirm: '本当に退会しますか？' }, class: "btn btn-danger rounded btn-sm mx-auto" %>
         </div>
     </div>
     <div class="mb-5">

@@ -15,7 +15,7 @@ class Public::OrdersController < ApplicationController
   def create
     cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
-    @order.save
+    if @order.save
     current_customer.cart_items.each do |cart_item|
       @order_item = OrderItem.new
       @order_item.item_id = cart_item.item_id
@@ -26,6 +26,8 @@ class Public::OrdersController < ApplicationController
     end
     cart_items.destroy_all
     redirect_to complete_public_orders_path
+    else render'public/items/index'
+    end
   end
 
   def show
