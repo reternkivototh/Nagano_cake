@@ -1,15 +1,15 @@
 <%= form_with model: @item, url: admin_items_path do |f| %>
-<div class="container px-5 px-sm-0 mt-3">
+<div class="container-fluid">
   <div class="row">
     <div class="offset-md-2">
-      <h5 class="d-inline-block my-4 ml-3 bg-light">　商品一覧　</h5>
+      <h5 class="d-inline-block ml-5 my-4 bg-light">　商品一覧　</h5>
     </div>
     <div class="col-3 my-4 icon ml-auto">
       <%= link_to new_admin_item_path do %>
         <i class="far fa-plus-square"></i>
       <% end %>
     </div>
-    <table class="table col-8 offset-2">
+    <table class="table col-8 offset-2 mb-5">
       <thead class="bg-light">
         <tr>
           <th>商品ID</th>
@@ -41,4 +41,3 @@
 </div>
 
 <% end %>
-<%= paginate @items %>
